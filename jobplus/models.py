@@ -77,10 +77,10 @@ class Job(Base):
 
 class Company(Base):
     id = db.Column(db.Integer, primary_key=True)
-    logo = db.Column(db.String(64),nullable=False)
-    website = db.Column(db.String(64),nullable=False)
+    logo = db.Column(db.String(64))
+    website = db.Column(db.String(64))
     email = db.Column(db.String(24), nullable=False)
-    location = db.Column(db.String(24), nullable=False)
+    location = db.Column(db.String(24))
     description = db.Column(db.String(24))
     about = db.Column(db.String(1024))
     tags = db.Column(db.String(128))

@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+{%block body%}
+<div class="row">
+    {% for company in company%}
+    <div class="col-sm-6 col-md-4 company">
+        <div class="thumbnail">
+            <a href="{{ company.id }}" target="_black">
+<img src="{{ company.logo }}" width="100" hight="100"alt="logo">
+        <div class="caption">
+            <h4 class="course__name">{{ company.name }}</h4>
+            <p class="course__description">{{ company.description }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{%endblock%}
