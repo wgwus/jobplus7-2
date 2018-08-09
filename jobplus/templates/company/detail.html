@@ -5,16 +5,6 @@ company - {{company.user.username}}
 
 {%block body%}
 <div class="jumbotron">
-    <a href="{{ company.id }}" target="_black">
-           <img src="{{ company.logo }}" width="100" hight="100"alt="logo">
-    <h2>公司名称:{{company.user.username}}</h2>
-    <p>{{ company.description }}</p>
-    <ul class="list-inline ml0 mb0 company-detail-mod-base-info__tags">
-        <li>{{ company.tags }}</li>
-    </ul>
-    <p>{{ company.website }}</p>
-    </a>
-</div>
 <div class="row">
   <div class="col-md-8">
     <h3> 公司详情:</h3>
@@ -36,6 +26,17 @@ company - {{company.user.username}}
   </div>
   {%endfor%}
    </div>
+   <div class="col-md-4">
+  地点 基本信息 
+    公司名称{{company.name}}
+    </div>
+<div class="row">
+<div class="col-md-8">
+    公司详情{{company.about}}
+   </div>
+   <div class="col-md-4">
+  地点 基本信息 
+    {{company.location}}
    </div>
    </div>
 {% endblock %}
