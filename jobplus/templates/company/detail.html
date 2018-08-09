@@ -25,12 +25,14 @@ company - {{company.user.username}}
     <p>{{company.location}}</p>
   <div class="have_job">
     在聘职位
-    
+
     {%for job in company.jobs%}
+    <a href="{{url_for('job.detail',job_id=job.id)}}">
   <div class="have_job1">
       <h4> {{job.name}}</h4> 
       {{job.tags}}
       {{ job.lowsalary }}-{{ job.highsalary }}{{job.work_year}}
+      </a>
   </div>
   {%endfor%}
    </div>
