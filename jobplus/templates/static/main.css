@@ -1,0 +1,25 @@
+{#.nav-pagination{
+    gext-align: center;
+}
+.form {
+    width: 400px;
+    margin: 0 auto;
+}
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none !important;
+}
+
+.job__name,
+.job__tag, 
+.job__create_time{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap
+}
+.job img {
+  height: 160px !important;
+}
+#}

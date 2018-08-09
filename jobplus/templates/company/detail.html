@@ -1,18 +1,39 @@
 {%extends "base.html"%}
 {%block title %}
-company - {{company.name}}
+company - {{company.user.username}}
 {%endblock%}
 
 {%block body%}
 <div class="jumbotron">
-    公司名称
-    </div>
+    <a href="{{ company.id }}" target="_black">
+           <img src="{{ company.logo }}" width="100" hight="100"alt="logo">
+    <h2>公司名称:{{company.user.username}}</h2>
+    <p>{{ company.description }}</p>
+    <ul class="list-inline ml0 mb0 company-detail-mod-base-info__tags">
+        <li>{{ company.tags }}</li>
+    </ul>
+    <p>{{ company.website }}</p>
+    </a>
+</div>
 <div class="row">
-<div class="col-md-8">
-    详细
+  <div class="col-md-8">
+    <h3> 公司详情:</h3>
+    <p>{{company.about}}</p>
+  </div>
+  <div class="col-md-4">
+    地点 基本信息 
+    <p>{{company.location}}</p>
+  <div class="have_job">
+    在聘职位
+    
+    {%for job in company.jobs%}
+  <div class="have_job1">
+      <h4> {{job.name}}</h4> 
+      {{job.tags}}
+      {{ job.lowsalary }}-{{ job.highsalary }}{{job.work_year}}
+  </div>
+  {%endfor%}
    </div>
-   <div class="col-md-4">
-  地点 基本信息 
    </div>
    </div>
 {% endblock %}

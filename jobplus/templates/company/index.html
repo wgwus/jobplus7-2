@@ -1,18 +1,23 @@
+{% from "macros.html" import render_pagination %}
 {%extends "base.html"%}
 {%block body%}
 <div class="row">
-    {% for company in company%}
+    {% for company in pagination.items %}
     <div class="col-sm-6 col-md-4 company">
         <div class="thumbnail">
             <a href="{{ company.id }}" target="_black">
 <img src="{{ company.logo }}" width="100" hight="100"alt="logo">
         <div class="caption">
-            <h4 class="course__name">{{ company.name }}</h4>
+           <h3 class="course__name">{{ company.user.username }}</h3>
             <p class="course__description">{{ company.description }}</p>
         </div>
       </a>
+      <hr>
+      <a href="#">
+          <p>再招职位:0</p>
     </div>
   </div>
   {% endfor %}
 </div>
+{{ render_pagination(pagination,"company.index")}}
 {%endblock%}

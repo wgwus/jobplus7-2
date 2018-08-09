@@ -1,0 +1,44 @@
+{%extends "base.html"%}
+{%block title %}
+job - {{job.name}}
+{%endblock%}
+
+
+{%block body%}
+<div class="jumbotron">
+    <div class="container">
+    <div class="col-md-8">
+    <h2>职位:{{job.name}}</h2>
+    <p>{{ job.lowsalary }}-{{ job.highsalary }}</p>
+
+    <ul class="list-inline ml0 mb0 company-detail-mod-base-info__tags"><li>
+    {{ job.tags }}
+    </li></ul>
+    <p>{{ job.location }}</p>
+    </div>
+    <div class="col-md-4">
+        {%if current_user.is_authenticated %}
+           {%if not job.current_user_is_applied %}
+           <a href="{{url_for('job.apply',job_id=job.id)}}"class="btn btn-sucess btn-lg dilivery-btn">投递</a>
+           {%else%}
+           <a href="#"class="btn btn-sucess btn-lg disabled="disabled"">已经投递</a>
+           {%endif%}
+           {%endif%}
+    
+    </div>
+    </div>
+    </div>
+<div class="row">
+<div class="col-md-8">
+    工作详情{{job.name}}
+   </div>
+   <div class="col-md-4">
+        <div class="col-md-2 col-sm-3">
+            <div class="img-warp">
+                <img width="100%" high="100%" src="{{job.company.logo}}">
+        </div></div>
+  <h3>{{job.company.user.username}}</h3>
+  <h5>{{job.company.description}}</h5>
+   </div>
+   </div>
+{% endblock %}

@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="http://labfile.oss.aliyuncs.com/courses/923/week7/code/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/main.css">
     </head>
     <body>
 <nav class="navbar navbar-inverse">
@@ -23,7 +24,7 @@
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	<ul class="nav navbar-nav">
 		<li class="active"><a href="/company">公司<span class="sr-only">(current)</span></a></li>
-		<li><a href="#">职位</a></li>
+		<li><a href="/job">职位</a></li>
 	</ul>
 	<ul class="nav navbar-nav navbar-right">       
     {% if not current_user.is_authenticated %}
@@ -59,6 +60,7 @@
       <!-- Bootstrap ?? jQuery -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="http://labfile.oss.aliyuncs.com/courses/923/week7/code/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+      <script src="static/main.js"></script>
     </body>    
 </html>
 

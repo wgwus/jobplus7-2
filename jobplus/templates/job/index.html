@@ -1,19 +1,22 @@
-{% extends "base.html" %}
+{%extends "base.html"%}
 {% from "macros.html" import render_pagination,render_job %}
+{% block title %}
+job
+{% endblock %}
+{#
+{%block body%}
 
-{%block title %}Home{% endblock %}
-
-{%block body %}
 <div class="jumbotron">
-<div class="container">
-    <h1>超级求职网</h1>
-    <p>地球最大的招聘平台</p>
+    <h1>职位</h1>
 </div>
+    
+<div class="job-list">
+    {%for job in pagination.items %}
+    {{ render_job(job)}}
+    {%endfor%}
 </div>
-
-<ul class="nav nav-tabs list-title">
-    <li role="presentation" class="active"><a href="#">最新职位</li>
-</ul>
+#}
+{%block body%}
  <div class="row">
      {% for job in pagination.items %}
      <div class="col-sm-6 col-md-4 company">
@@ -23,16 +26,17 @@
              <h3 class="job__name">{{ job.name }}</h3>
              <h6 class="create__time">{{ job.updated_at }}</h6>
              <h6 class="job__tag">{{ job.tags }}</h6>
-             </a>
+       </a>
          </div>
        <hr>
-       <img src="{{ job.company.logo }}" width="100" hight="100"alt="logo">
+ <img src="{{ job.company.logo }}" width="100" hight="100"alt="logo">
        <a href="{{url_for('company.detail',company_id=job.id)}}">
           {{job.company.user.username}}
      </div>
    </div>
-  {% endfor %}
+   {% endfor %}
  </div>
  {{ render_pagination(pagination,"job.index")}}
- 
-{% endblock %}
+ {%endblock%}
+
+

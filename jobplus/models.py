@@ -1,7 +1,7 @@
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from jobplus.config import configs
-from flask_login import UserMixin
+from flask_login import UserMixin,current_user
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
@@ -72,12 +72,17 @@ class Job(Base):
     is_fulltime = db.Column(db.Boolean, default=True)
     is_open = db.Column(db.Boolean, default=True)
     company_id = db.Column(db.Integer, db.ForeignKey('company.id', ondelete='CASCADE'))
-    company = db.relationship('Company', uselist=False)
+    company = db.relationship('Company', uselist=False,backref=db.backref('jobs',lazy='dynamic'))
+
+    @property
+    def current_user_is_applied(self):
+        d = Dilivery.query.filter_by(job_id=self.id,user_id=current_user.id).first()
+        return (d is not None)
 
 
 class Company(Base):
     id = db.Column(db.Integer, primary_key=True)
-    logo = db.Column(db.String(64))
+    logo = db.Column(db.String(128))
     website = db.Column(db.String(64))
     email = db.Column(db.String(24), nullable=False)
     location = db.Column(db.String(24))

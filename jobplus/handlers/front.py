@@ -1,13 +1,17 @@
 from flask import Blueprint, render_template,redirect,url_for,flash,request
-from jobplus.models import User,db
+from jobplus.models import User,db,Job
 from jobplus.forms import LoginForm, RegisterForm
 from flask_login import login_user,logout_user,login_required
 front = Blueprint('front', __name__)
 
 @front.route('/')
 def index():
-    
-    return render_template('index.html')
+    page =request.args.get('page',default=1,type=int)
+    pagination = Job.query.order_by(Job.created_at.desc()).paginate(
+            page=page,
+            per_page=6,
+            error_out=False)
+    return render_template('index.html',pagination=pagination)
 
 @front.route('/login',methods=['GET','POST'])
 def login():
